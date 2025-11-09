@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-primary: #0A0E27;
+            --bg-secondary: #151935;
+            --bg-card: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a8c5;
+            --accent-blue: #6A8EFF;
+            --accent-purple: #9B7EE8;
+            --accent-cyan: #4DD4FF;
+            --border-color: rgba(106, 142, 255, 0.2);
+            --glow-color: rgba(106, 142, 255, 0.3);
+        }
+        body{
+            background: radial-gradient(at 0% 0%, #8b5cf6 0px, transparent 50%),
+                radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%),
+                radial-gradient(at 100% 100%, #6366f1 0px, transparent 50%),
+                radial-gradient(at 0% 100%, #6a36b7 0px, transparent 50%),
+                #21164b;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            overflow-x: hidden;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* nav */
+        nav{
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem ;
+            background: #0a090f;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container{
+            max-width: 1500px;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo{
+            display: flex;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            font-size: larger;
+            color: var(--text-primary);
+          
+        }
+        .logo>span{
+            margin-left: 15px;
+            font-size: x-large;
+            margin-top: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .nav-link{
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-top: 6px;
+        }
+        .nav-link a{
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        .nav-link a:hover{
+            color: var(--text-primary);
+        }
+        .nav-button{
+            display: flex;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .btn{
+            padding: 0.5rem 1.5rem;
+            justify-items: center;
+            display: inline-block;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.5s;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn1{
+            background: #0b46a5;
+            color: white;
+            box-shadow: 0 4px 20px var(--glow-color);
+        }
+        .btn1:hover{
+            box-shadow: 0 6px 30px var(--glow-color);
+            transform: translateY(-2px);
+        }
+        .btn2{
+            border: 1px solid var(--border-color);
+            color: white;
+            background: transparent;
+        }
+        .btn2:hover{
+            background: rgba(106, 142, 255, 0.1);
+        }
+        /* nav end */
+        .about{
+            height: auto;
+            position: relative;
+            /* margin-top: 4rem; */
+            padding: 150px 2rem 4rem;
+        }
+        .about::before{
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(106, 142, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .about-container{
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .about-header{
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .about-header h1{
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-header p{
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .about-cards{
+            display: grid;
+            gap: 3rem;
+        }
+        .about-card{
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .about-card:hover{
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--glow-color);
+        }
+        .about-card h2{
+            font-size:2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .about-card p{
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .cta{
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+        }
+
+        .cta h2{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cta p{
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        /* footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid none;
+            background: #0a090f;
+            
+        }
+
+        .footer-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .brand{
+            display: grid;
+            height: 20px;
+
+
+        }
+        .footer-links h4{
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: white;
+        }
+        .footer-links a {
+            color: rgb(155, 155, 219);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+        .footer-links ul{
+            list-style-type: none;
+        }
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        .footer-bottom{
+            font-size: 1rem;
+            font-weight: 200;
+            color: rgb(155, 155, 219);
+            text-align: center;
+            letter-spacing: 1;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        /* Mobile Responsive - Navbar */
+        @media (max-width: 1024px) {
+            .nav-container {        
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+            }
+            
+            .logo > span {        
+        font-size: large;
+        margin-top: 5px;
+            }
+            
+            .nav-link {        
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 0;
+            }
+            
+            .nav-button {        
+        gap: 1rem;
+            }
+            
+        .btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+    .nav-link {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-link a {
+        font-size: 0.9rem;
+    }
+    
+    .logo-icon img {
+        width: 50px;
+        height: 50px;
+    }
+        }
+        
+        @media (max-width: 480px) {
+    .logo > span {
+        font-size: medium;
+    }
+    
+    .nav-button {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src = "./assets/lifesync logo.svg" width="70" height="70"/>
+                </div>
+                <span>LifeSync</span>
+            </a>
+            <ul class="nav-link">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="benefits">Benefits</a></li>
+                <li><a href="pricing">Pricing</a></li>
+                <li><a href="how it works">How it works</a></li>
+                <li><a href="features">Features</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+            <div class="nav-button">
+                <a href="signin.html" class="btn btn1">Sign in</a>
+                <a href="signup.html" class="btn btn2">Start Free Trial</a>
+            </div>
+        </div>
+    </nav>
+    <section class="about">
+        <div class="about-container">
+            <div class="about-header">
+                <h1>About LifeSync AI</h1>
+                <p>Empowering individuals to live smarter, healthier, and happier through intelligent AI-powered life management</p>
+            </div>
+            <div class="about-cards">
+                <div class="about-card">
+                    <h2>Our Mission</h2>
+                    <p>We believe everyone deserves a personal AI assistant that truly understands their needs. LifeSync AI combines cutting-edge artificial intelligence with intuitive design to help you manage your health, productivity, and finances — all in one seamless platform.</p>
+                </div>
+                <div class="about-card">
+                    <h2>What We Do</h2>
+                    <p>LifeSync AI is more than just an app — it's your intelligent life companion. We provide personalized insights and automation across wellness tracking, smart scheduling, and financial planning, helping you achieve balance and reach your goals effortlessly.</p>
+                </div>
+                <div class="about-card">
+                    <h2>Why Choose Us</h2>
+                    <p>Built with privacy-first principles and powered by advanced AI technology, LifeSync adapts to your unique lifestyle. Our platform grows with you, learning your patterns and preferences to deliver increasingly personalized recommendations that truly make a difference.</p>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">User Rating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">AI Support</div>
+                </div>
+            </div>
+            <div class="cta">
+                <div>
+                    <h2>Ready to Transform Your Life?</h2>
+                    <p>Join thousands of users who are already living smarter with LifeSync AI</p>
+                </div>
+                <button class="btn btn1">Start Free Trail</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="brand">
+                <a href="#" class="logo">
+                   <div class="logo-icon">
+                    <img src = "./assets/lifesync logo.svg" width="70" height="70"/>
+                   </div>
+                   <span>LifeSync</span>
+                </a>
+                <p style="color: rgb(155, 155, 219); font-size: 1rem; margin-top: 20px;">Your personal AI life management platform</p>
+            </div>
+            <div class="footer-links">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="featues">Features</a></li>
+                    <li><a href="benefits">Benefits</a></li>
+                    <li><a href="how it works">How it works</a></li>
+                    <li><a href="pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 LifeSync AI. All rights reserved. Powered by advanced AI technology.</p>
+        </div>
+    </footer>
+</body>
+</html>
